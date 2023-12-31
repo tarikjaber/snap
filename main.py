@@ -7,16 +7,18 @@ def wait_until(target):
         now = datetime.datetime.now()
         if now >= target:
             break
-        print(f"Waiting until {target.strftime('%H:%M:%S')} (currently {now.strftime('%H:%M:%S')})")
+        sleep_time = (target - now).total_seconds() / 2
+        sleep_until = now + datetime.timedelta(seconds=sleep_time)
+        print(f"Sleeping until {sleep_until}...")
         time.sleep((target - now).total_seconds() / 2)
 
 # The time of the snap in the video (hours, minutes, seconds)
-snap_time = datetime.timedelta(minutes=1, seconds=11, milliseconds=800)  # 1 minute and 11 seconds before the snap
+snap_time = datetime.timedelta(minutes=1, seconds=11, milliseconds=600)  # 1 minute and 11 seconds before the snap
 
 # Calculate when to start the video
 now = datetime.datetime.now()
-midnight = datetime.datetime.combine(now.date(), datetime.time(0, 0, 0))  # Midnight of the current day
-midnight = datetime.datetime.combine(now.date(), datetime.time(15, 46, 0))  # Midnight of the current day
+midnight = datetime.datetime.combine(now.date() + datetime.timedelta(days=1), datetime.time(0, 0, 0))  # Midnight of the current day
+# midnight = datetime.datetime.combine(now.date(), datetime.time(16, 5, 0))  # Midnight of the current day
 start_time = midnight - snap_time
 
 # Check if the current time is past the start time
