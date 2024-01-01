@@ -16,7 +16,7 @@ snap_time = datetime.timedelta(minutes=1, seconds=11, milliseconds=800)  # 1 min
 # Calculate when to start the video
 now = datetime.datetime.now()
 midnight = datetime.datetime.combine(now.date(), datetime.time(0, 0, 0))  # Midnight of the current day
-midnight = datetime.datetime.combine(now.date(), datetime.time(15, 46, 0))  # Midnight of the current day
+midnight = datetime.datetime.combine(now.date(), datetime.time(20, 56, 0))  # Midnight of the current day
 start_time = midnight - snap_time
 
 # Check if the current time is past the start time
