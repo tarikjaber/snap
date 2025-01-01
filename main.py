@@ -14,7 +14,7 @@ assert(len(val) == 3 or len(val) == 4)
 val = val.zfill(4)
 
 day_shift = int(val) // 2400
-hour = int(val[0:2])
+hour = int(val[0:2]) % 24
 minute = int(val[2:4])
 
 snap_time = datetime.time(hour, minute)
